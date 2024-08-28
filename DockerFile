@@ -57,9 +57,9 @@ RUN apt-get update && apt-get install apt-utils -y && apt-get install unzip -y
 RUN apt-get install wget -y
 
 # download ip2location db
-RUN wget https://download.openintelligence24.com/vendors/ip2location/IP2LOCATION-LITE-ASN.IPV6.CSV.ZIP \
-    && wget https://download.openintelligence24.com/vendors/ip2location/IP2LOCATION-LITE-DB11.IPV6.BIN.ZIP \
-    && wget https://download.openintelligence24.com/vendors/ip2location/IP2PROXY-LITE-PX10.IPV6.CSV.ZIP
+RUN wget https://download.openintelligence24.com/vendors/ip2location/IP2LOCATION-LITE-ASN.IPV6.CSV.ZIP --no-check-certificate \
+    && wget https://download.openintelligence24.com/vendors/ip2location/IP2LOCATION-LITE-DB11.IPV6.BIN.ZIP --no-check-certificate \
+    && wget https://download.openintelligence24.com/vendors/ip2location/IP2PROXY-LITE-PX10.IPV6.CSV.ZIP --no-check-certificate
 
 # extract them
 RUN unzip IP2LOCATION-LITE-DB11.IPV6.BIN.ZIP -d /opt/nfcollector/vendors/ip2location/db/IP2LOCATION-LITE-DB11.IPV6.BIN/ \
@@ -67,7 +67,7 @@ RUN unzip IP2LOCATION-LITE-DB11.IPV6.BIN.ZIP -d /opt/nfcollector/vendors/ip2loca
     && unzip IP2LOCATION-LITE-ASN.IPV6.CSV.ZIP -d /opt/nfcollector/vendors/ip2location/db/IP2LOCATION-LITE-ASN.IPV6.CSV/
 
 # download ipsum db
-RUN wget https://download.openintelligence24.com/vendors/ipsum/ipsum.txt
+RUN wget https://download.openintelligence24.com/vendors/ipsum/ipsum.txt --no-check-certificate
 
 RUN mv ./ipsum.txt /opt/nfcollector/vendors/ipsum/ipsum.txt -v
 
